@@ -18,8 +18,8 @@
             <li id="services" class="nav-item">
               <a class="nav-link" href="${contextRoot}/services">Services</a>
             </li>
-            <li id="list" class="nav-item">
-              <a class="nav-link" href="${contextRoot}/listProducts">View Products</a>
+            <li id="allProducts" class="nav-item">
+              <a class="nav-link" href="${contextRoot}/show/all/products">View Products</a>
             </li>
             <li id="contact" class="nav-item">
               <a class="nav-link" href="${contextRoot}/contact">Contact</a>
