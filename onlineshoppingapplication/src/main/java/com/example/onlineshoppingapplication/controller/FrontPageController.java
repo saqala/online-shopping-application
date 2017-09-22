@@ -12,7 +12,24 @@ public class FrontPageController {
 	@RequestMapping(value= {"/", "home","index"} )
 	public ModelAndView index() {
 		ModelAndView mv = new ModelAndView("page");
-		mv.addObject("greetings", "Welcome to Spring MVC");
+		mv.addObject("title", "Home");
+		mv.addObject("userClickHome", true);
+		return mv;
+	}
+	
+	@RequestMapping(value= "/about" )
+	public ModelAndView about() {
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "About");		
+		mv.addObject("userClickAbout", true);
+		return mv;
+	}
+	
+	@RequestMapping(value= "/contact" )
+	public ModelAndView contact() {
+		ModelAndView mv = new ModelAndView("page");
+		mv.addObject("title", "Contact");		
+		mv.addObject("userClickContact", true);
 		return mv;
 	}
 	
@@ -23,10 +40,10 @@ public class FrontPageController {
 		return mv;
 	}*/
 	
-	@RequestMapping(value= {"/testvariable/{greetings}"} )
+/*	@RequestMapping(value= {"/testvariable/{greetings}"} )
 	public ModelAndView test(@PathVariable(value="greetings") String sc) {
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("greetings", sc);
 		return mv;
-	}
+	}*/
 }
