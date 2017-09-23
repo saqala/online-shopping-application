@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import example.com.onlineshoppingapplicationbackend.dao.CategoryDao;
 import example.com.onlineshoppingapplicationbackend.dto.Category;
 
-@Repository
+@Repository("categoryDao")
 public class CategoryImp implements CategoryDao {
 
 	private static List<Category> categories = new ArrayList<>();
