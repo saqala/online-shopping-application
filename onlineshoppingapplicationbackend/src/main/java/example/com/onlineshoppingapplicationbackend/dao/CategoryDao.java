@@ -6,6 +6,7 @@ import example.com.onlineshoppingapplicationbackend.dto.Category;
 
 public interface CategoryDao {
 
+	Boolean add(Category category);
 	List<Category> listCategory();
 
 	Category get(int id);

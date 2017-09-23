@@ -3,9 +3,13 @@ package example.com.onlineshoppingapplicationbackend.daoImp;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import javax.xml.ws.RespectBinding;
 
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import example.com.onlineshoppingapplicationbackend.dao.CategoryDao;
 import example.com.onlineshoppingapplicationbackend.dto.Category;
@@ -14,7 +18,8 @@ import example.com.onlineshoppingapplicationbackend.dto.Category;
 public class CategoryImp implements CategoryDao {
 
 	private static List<Category> categories = new ArrayList<>();
-	
+	@Autowired
+	private SessionFactory sessionfactory;
 	static {
 		Category category = new Category();
 		category.setId(1);
@@ -52,6 +57,20 @@ public class CategoryImp implements CategoryDao {
 			}
 		}
 		return null;
+	}
+	@Override
+	@Transactional
+	public Boolean add(Category category) {
+		try {
+			sessionfactory.getCurrentSession().persist(category);
+			
+		}
+		catch (Exception e){
+			e.printStackTrace();
+			return false;
+			
+		}
+		return true;
 	}
 
 }
