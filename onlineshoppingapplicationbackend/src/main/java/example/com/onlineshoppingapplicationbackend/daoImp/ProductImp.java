@@ -4,10 +4,14 @@ import java.util.List;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import example.com.onlineshoppingapplicationbackend.dao.ProductDao;
 import example.com.onlineshoppingapplicationbackend.dto.Product;
 
+@Repository("productDao")
+@Transactional
 public class ProductImp implements ProductDao {
 
 	@Autowired
