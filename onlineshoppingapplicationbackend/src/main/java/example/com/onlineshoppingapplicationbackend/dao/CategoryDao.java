@@ -12,4 +12,6 @@ public interface CategoryDao {
 	Category get(int id);
 	Boolean update(Category category);
 	Boolean delete(Category category);
+	
+	
 }

@@ -17,6 +17,7 @@ $(function() {
 		$('#userModel').addClass('active');
 		break;		
 	default:
+		if(menu == "Home") break;
 		$('#allProducts').addClass('active');
 		$('#a_' + menu).addClass('active');
 		break;
