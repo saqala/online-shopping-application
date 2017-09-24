@@ -112,7 +112,7 @@ public class ProductImp implements ProductDao {
 		String selectActiveProductsByCategory = "FROM Product WHERE active = :active AND categoryId = :category";
 		return sessionFactory.getCurrentSession().createQuery(selectActiveProductsByCategory, Product.class)
 				.setParameter("active", true)
-				.setParameter("categoryId", categoryId)
+				.setParameter("category", categoryId)
 				.getResultList();
 	}
 

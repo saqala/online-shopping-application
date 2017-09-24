@@ -29,7 +29,7 @@ public class ProductTestCase {
 		productDAO = (ProductDao) context.getBean("productDao");
 	}
 
-	@Test
+	/*@Test
 	public void testCRUDProduct() {
 
 		// create operation
@@ -55,6 +55,28 @@ public class ProductTestCase {
 		// list
 		assertEquals("Successfully fetched all products", 6, productDAO.list().size());
 
-	}
+	}*/
+	
+	@Test
+	public void testListActiveProducts() {
+		assertEquals("Successfully fetched all active products",
+				5,productDAO.listActiveProducts().size());				
+	} 
+	
+	
+	@Test
+	public void testListActiveProductsByCategory() {
+		assertEquals("Successfully fetched the list of products!",
+				3,productDAO.listActiveProductsByCategory(3).size());
+		assertEquals("Successfully fetched the list of products!",
+				2,productDAO.listActiveProductsByCategory(1).size());
+	} 
+	
+	@Test
+	public void testGetLatestActiveProduct() {
+		assertEquals("Successfully fetched all the latest active  products!",
+				3,productDAO.getLatestActiveProducts(3).size());
+		
+	} 
 
 }
