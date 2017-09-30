@@ -1,11 +1,15 @@
 package com.example.onlineshoppingapplication.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.example.onlineshoppingapplication.exception.ProductNotFoundException;
 
 import example.com.onlineshoppingapplicationbackend.dao.CategoryDao;
 import example.com.onlineshoppingapplicationbackend.dao.ProductDao;
@@ -21,8 +25,12 @@ public class FrontPageController {
 	@Autowired
 	private ProductDao productDao;
 	
+	private static final Logger logger = LoggerFactory.getLogger(FrontPageController.class);
+	
 	@RequestMapping(value= {"/", "home","index"} )
 	public ModelAndView index() {
+		logger.info("Inside FrontPage Controller -- Home page");
+		logger.debug("Inside FrontPage Controller -- Home page -- DEBUG");
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("title", "Home");
 		mv.addObject("userClickHome", true);
@@ -83,10 +91,12 @@ public class FrontPageController {
 	}
 	
 	@RequestMapping(value = "/show/{id}/product")
-	public ModelAndView showSingleProduct(@PathVariable int id) {
+	public ModelAndView showSingleProduct(@PathVariable int id) throws ProductNotFoundException{
 		ModelAndView mv = new ModelAndView("page");
 		
 		Product product = productDao.get(id);
+		
+		if(product == null) throw new ProductNotFoundException();
 		
 		product.setViews(product.getViews() + 1);
 		
