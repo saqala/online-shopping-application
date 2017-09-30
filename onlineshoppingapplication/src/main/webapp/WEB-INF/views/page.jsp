@@ -63,17 +63,25 @@
 			</c:if>
 
 			<!-- User click Category or All Products -->
-			<c:if test="${userClickAllProducts == true or userClickCategoryProducts == true}">
+			<c:if
+				test="${userClickAllProducts == true or userClickCategoryProducts == true}">
 				<!-- Page Content -->
 
 				<%@include file="listProducts.jsp"%>
 			</c:if>
-			
-						<!-- User click Single Product -->
+
+			<!-- User click Single Product -->
 			<c:if test="${userClickShowProduct == true}">
 				<!-- Page Content -->
 
 				<%@include file="singleProduct.jsp"%>
+			</c:if>
+
+			<!-- User click Manage Products-->
+			<c:if test="${userClickManageProducts == true}">
+				<!-- Page Content -->
+
+				<%@include file="manageProducts.jsp"%>
 			</c:if>
 
 		</div>
@@ -82,11 +90,11 @@
 
 	</div>
 	<!-- Bootstrap core JavaScript -->
-	<script src="${js}/jquery.min.js"></script>	
+	<script src="${js}/jquery.min.js"></script>
 	<script src="${js}/popper.min.js"></script>
 	<script src="${js}/bootstrap.min.js"></script>
 	<script src="${js}/jquery.dataTables.js"></script>
-	<script src="${js}/dataTables.bootstrap.js"></script>	
+	<script src="${js}/dataTables.bootstrap.js"></script>
 	<script src="${js}/myapp.js"></script>
 </body>
 

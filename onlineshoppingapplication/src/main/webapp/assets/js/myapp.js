@@ -10,6 +10,9 @@ $(function() {
 	case 'All Products':
 		$('#allProducts').addClass('active');
 		break;
+	case 'Manage Products':
+		$('#manageProducts').addClass('active');
+		break;
 	case 'Product Management':
 		$('#manageProduct').addClass('active');
 		break;
