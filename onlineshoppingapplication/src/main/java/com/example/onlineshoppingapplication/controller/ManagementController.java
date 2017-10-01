@@ -12,9 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.onlineshoppingapplication.Utils.FileUtil;
@@ -89,5 +91,22 @@ public class ManagementController {
 		productao.add(mProduct);
 
 		return "redirect:/manage/products?operation=product";
+	}
+	
+	@RequestMapping(value="/product/{id}/activation", method=RequestMethod.POST)
+	@ResponseBody
+	
+	public String handleProductActivation(@PathVariable int id) {
+		
+		Product product = productao.get(id);
+		boolean isActive = product.isActive();
+		
+		product.setActive(!product.isActive());
+		
+		productao.update(product);
+		
+		return (isActive) 
+				? "You have successfully deactivated the product with id " + product.getId() 
+				:	"You have successfully activated the product with id " + product.getId() ;
 	}
 }
