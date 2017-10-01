@@ -2,6 +2,7 @@ package com.example.onlineshoppingapplication.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -16,10 +17,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.onlineshoppingapplication.Utils.FileUtil;
+
 import example.com.onlineshoppingapplicationbackend.dao.CategoryDao;
 import example.com.onlineshoppingapplicationbackend.dao.ProductDao;
 import example.com.onlineshoppingapplicationbackend.dto.Category;
 import example.com.onlineshoppingapplicationbackend.dto.Product;
+
 
 @Controller
 @RequestMapping("/manage")
@@ -66,13 +70,17 @@ public class ManagementController {
 
 	@RequestMapping(value = "/products", method = RequestMethod.POST)
 	public String handleProductSubmission(@Valid @ModelAttribute("product") Product mProduct, BindingResult result,
-			Model model) {
+			Model model, HttpServletRequest request) {
 
 		if(result.hasErrors()) {
 			model.addAttribute("userClickManageProducts", true);
 			model.addAttribute("title", "Manage Products");
 			model.addAttribute("message", "Validation failed for Product Submission!");
 			return "page";
+		}
+		
+		if(!mProduct.getFile().getOriginalFilename().equals("")) {
+			new FileUtil().uploadFile(request, mProduct.getFile(), mProduct.getCode());
 		}
 		logger.info(mProduct.toString());
 		productao.add(mProduct);
