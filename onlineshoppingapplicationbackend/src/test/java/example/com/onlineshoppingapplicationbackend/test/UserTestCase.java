@@ -29,7 +29,7 @@ public class UserTestCase {
 		userDao = (UserDao) context.getBean("userDao");
 	}
 	
-	@Test
+/*	@Test
 	public void testAddUser() {
 		
 		user = new User() ;
@@ -40,45 +40,27 @@ public class UserTestCase {
 		user.setRole("CUSTOMER");
 		user.setEnabled(true);
 		user.setPassword("12345");
-		
-		
-		address = new Address();
-		address.setAddressLineOne("101/B Jadoo Society, Krissh Nagar");
-		address.setAddressLineTwo("Near Kaabil Store");
-		address.setCity("Mumbai");
-		address.setState("Maharashtra");
-		address.setCountry("India");
-		address.setPostalCode("400001");
-		address.setBilling(true);
-		
-			// linked the address with the user
-		address.setUserId(user.getId());
-		
-
-		// add the user
-		assertEquals("Failed to add the user!", true, userDao.addUser(user));	
-		// add the address
-		assertEquals("Failed to add the billing address!", true, userDao.addAddress(address));
-
 				
 		if(user.getRole().equals("USER")) {
 			
 			cart = new Cart();
 			cart.setUser(user);
+			user.setCart(cart);
 			
-			assertEquals("Failed to add cart!", true, userDao.addCart(cart));
+
 		}
-		// add the shipping address
-		address = new Address();
-		address.setAddressLineOne("201/B Jadoo Society, Kishan Kanhaiya Nagar");
-		address.setAddressLineTwo("Near Kudrat Store");
-		address.setCity("Mumbai");
-		address.setState("Maharashtra");
-		address.setCountry("India");
-		address.setPostalCode("400001");
-		address.setUserId(user.getId());
-		assertEquals("Failed to add the shipping address!", true, userDao.addAddress(address));
-		
-	}
+
+		// add the user
+		assertEquals("Failed to add the user!", true, userDao.addUser(user));	
+	}*/
+	
+	@Test
+	public void testUpdateCart() {
+		user = userDao.getByEmail("hr@gmail.com");
+		cart = user.getCart();
+		cart.setGrandTotal(10000);
+		cart.setCartLines(1);
+		assertEquals("Failed to update the cart!", true, userDao.UpdateCart(cart));			
+	} 
 
 }

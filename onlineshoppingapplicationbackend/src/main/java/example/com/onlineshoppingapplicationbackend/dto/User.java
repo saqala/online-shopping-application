@@ -109,7 +109,7 @@ public class User implements Serializable{
 	}
 	
 	
-	@OneToOne(mappedBy="user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
 	private Cart cart;
 	public Cart getCart() {
 		return cart;

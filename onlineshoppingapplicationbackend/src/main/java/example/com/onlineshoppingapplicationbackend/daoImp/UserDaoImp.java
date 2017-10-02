@@ -27,13 +27,34 @@ public class UserDaoImp implements UserDao {
 	@Override
 	public boolean addAddress(Address address) {
 		sessionFactory.getCurrentSession().persist(address);
-		return false;
+		return true;
+	}
+
+
+
+	@Override
+	public User getByEmail(String email) {
+		String selectQuery = "FROM User WHERE email = :email";
+		
+		try {
+			return sessionFactory.getCurrentSession().createQuery(selectQuery, User.class)
+					.setParameter("email", email).
+					getSingleResult();
+		}
+		
+		catch (Exception ex) {
+			ex.printStackTrace();
+			return null;
+		}
+		
 	}
 
 	@Override
-	public boolean addCart(Cart cart) {
-		sessionFactory.getCurrentSession().persist(cart);
-		return false;
+	public boolean UpdateCart(Cart cart) {
+		sessionFactory.getCurrentSession().update(cart);
+		return true;
 	}
+
+
 
 }
