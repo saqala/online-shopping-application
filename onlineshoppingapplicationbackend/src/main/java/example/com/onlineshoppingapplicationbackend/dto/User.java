@@ -1,5 +1,6 @@
 package example.com.onlineshoppingapplicationbackend.dto;
 
+
 import java.io.Serializable;
 
 import javax.persistence.CascadeType;
@@ -109,7 +110,7 @@ public class User implements Serializable{
 	}
 	
 	
-	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+	@OneToOne(mappedBy="user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Cart cart;
 	public Cart getCart() {
 		return cart;

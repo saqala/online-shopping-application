@@ -1,5 +1,6 @@
 package example.com.onlineshoppingapplicationbackend.dto;
 
+
 import java.io.Serializable;
 
 import javax.persistence.Column;
@@ -7,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -39,6 +42,15 @@ public class Address implements Serializable {
 	private boolean shipping;
 	@Column(name="is_billing")
 	private boolean billing;
+	@ManyToOne
+	private User user;
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -95,20 +107,14 @@ public class Address implements Serializable {
 				+ ", billing=" + billing + "]";
 	}
 		
-	@Column(name = "user_id")
-	private int userId;
+
 	public boolean isShipping() {
 		return shipping;
 	}
 	public void setShipping(boolean shipping) {
 		this.shipping = shipping;
 	}
-	public int getUserId() {
-		return userId;
-	}
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
+
 	
 	
 }
