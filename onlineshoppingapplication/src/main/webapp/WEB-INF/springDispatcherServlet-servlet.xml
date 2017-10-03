@@ -19,7 +19,7 @@
    >
 
 <context:component-scan base-package="com.example.onlineshoppingapplication"></context:component-scan>
-<context:component-scan base-package="example.com.onlineshoppingapplicationbackend"></context:component-scan>
+
 
 <bean id="viewResolver"
       class="org.springframework.web.servlet.view.UrlBasedViewResolver">

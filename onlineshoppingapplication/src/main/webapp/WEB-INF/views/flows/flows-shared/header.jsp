@@ -51,7 +51,7 @@
 </head>
 
 <body>
-	<div class="se-pre-con"></div>
+	
 	<div class="wrapper">
 
 	    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
