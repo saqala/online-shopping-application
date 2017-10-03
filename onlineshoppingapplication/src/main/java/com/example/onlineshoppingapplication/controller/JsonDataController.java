@@ -7,11 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import example.com.onlineshoppingapplicationbackend.dao.ProductDao;
 import example.com.onlineshoppingapplicationbackend.dto.Product;
 
-@Controller
+@RestController
 @RequestMapping("/json/data")
 public class JsonDataController {
 
