@@ -22,7 +22,7 @@
 		<intercept-url pattern="/cart/**" access="hasAuthority('USER')" />
 		<!-- rest of the world -->
 		<intercept-url pattern="/**" access="permitAll" />
-		<form-login login-page="/login" />
+		<form-login login-page="/login" default-target-url="/home"/>
 		<access-denied-handler error-page="/access-denied" />
 	</http>
 
