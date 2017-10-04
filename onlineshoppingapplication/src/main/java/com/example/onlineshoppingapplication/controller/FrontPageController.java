@@ -108,4 +108,18 @@ public class FrontPageController {
 		return mv;
 	}
 	
+	@RequestMapping(value="/login")
+	public ModelAndView login(@RequestParam(name="error", required = false)	String error,
+			@RequestParam(name="logout", required = false) String logout) {
+		ModelAndView mv= new ModelAndView("login");
+		mv.addObject("title", "Login");
+		if(error!=null) {
+			mv.addObject("message", "Username and Password is invalid!");
+		}
+		if(logout!=null) {
+			mv.addObject("logout", "You have logged out successfully!");
+		}
+		return mv;
+	}
+	
 }
