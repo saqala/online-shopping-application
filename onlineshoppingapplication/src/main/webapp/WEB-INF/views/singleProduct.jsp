@@ -39,6 +39,7 @@
 		<hr />
 
 		<h6>Qty. Available: ${product.quantity}</h6>
+		<security:authorize access="isAnonymous() or hasAuthority('USER')">	
 					<c:choose>
 				
 				<c:when test="${product.quantity < 1}">
@@ -59,6 +60,11 @@
 			
 			</c:choose>
 		
+		</security:authorize>
+					<security:authorize access="hasAuthority('ADMIN')">
+				<a href="${contextRoot}/manage/${product.id}/product" class="btn btn-success">
+				<span class="glyphicon glyphicon-pencil"></span> Edit</a>
+			</security:authorize>	
 
 			<a href="${contextRoot}/show/all/products" class="btn btn-warning">
 				Continue Shopping</a>
