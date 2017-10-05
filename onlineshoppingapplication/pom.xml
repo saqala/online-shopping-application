@@ -13,7 +13,18 @@
 		<spring.version>4.3.6.RELEASE</spring.version>
 
 	</properties>
+
 	<dependencies>
+	
+			<!-- Backend Project -->
+
+		<dependency>
+			<groupId>example.com</groupId>
+			<artifactId>onlineshoppingapplicationbackend</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+		
 <!-- JAVA EE -->
 		<dependency>
 			<groupId>javax</groupId>
@@ -85,15 +96,7 @@
 	    
 
 
-		<!-- Backend Project -->
 
-		<dependency>
-			<groupId>example.com</groupId>
-			<artifactId>onlineshoppingapplicationbackend</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-
-		</dependency>
-		
 
 	</dependencies>
 	<build>
@@ -106,6 +109,16 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
+
+      <plugin>
+        <groupId>com.heroku.sdk</groupId>
+        <artifactId>heroku-maven-plugin</artifactId>
+        <version>1.2.0</version>
+        <configuration>
+        	<appName>onlineshoppinapp</appName>
+        </configuration>
+      </plugin>
+  
 		</plugins>
 		<finalName>onlineshoppingapplication</finalName>
 	</build>
