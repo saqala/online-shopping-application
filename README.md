@@ -1,6 +1,6 @@
 # Online Shopping application
 
 
-Demo:
+Demo
 
 
