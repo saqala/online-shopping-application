@@ -1,6 +1,13 @@
 <%@include file="../flows-shared/header.jsp" %>
 <div class="container">
-	
+		    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+	        <div class="container">
+	            <!-- Brand and toggle get grouped for better mobile display -->
+	            <div class="navbar-header">
+	                <a class="navbar-brand" href="${flowExecutionUrl}&_eventId=home">Online Shopping</a>
+	            </div>
+			</div>
+		</nav>
 	<div class="row">
 	
 		<div class="col-sm-6">

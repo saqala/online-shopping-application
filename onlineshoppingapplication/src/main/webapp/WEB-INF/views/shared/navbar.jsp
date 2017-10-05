@@ -48,7 +48,7 @@
 		                    <security:authorize access="hasAuthority('USER')">
 			                    <li id="cart">
 			                        <a href="${contextRoot}/cart/show">
-			                        	<span class="glyphicon glyphicon-shopping-cart"></span>&#36;<span class="badge">${userModel.cart.cartLines}</span> - &#36; ${userModel.cart.grandTotal} 
+			                        	<span class="fa fa-shopping-cart"></span>&#36;<span class="badge">${userModel.cart.cartLines}</span> - &#36; ${userModel.cart.grandTotal} 
 			                        </a>
 			                    </li>		     
 			                	<li role="separator" class="divider"></li>	                                   

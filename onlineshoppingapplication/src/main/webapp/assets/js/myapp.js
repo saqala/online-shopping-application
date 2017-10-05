@@ -19,6 +19,7 @@ $(function() {
 	case 'Shopping Cart':
 		$('#userModel').addClass('active');
 		break;		
+
 	default:
 		if(menu == "Home") break;
 		$('#allProducts').addClass('active');
@@ -359,3 +360,14 @@ $categoryForm = $('#categoryForm');
 
 );
 	
+jQuery(document).ready(function($) {
+	  $.getScript( "https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" )
+	  	.done(function( script, textStatus ) {
+	    	console.log( textStatus );
+	      	console.log("asdasd");
+	 		//'[data-toggle="tooltip"]').tooltip();
+	  	})
+	  	.fail(function( jqxhr, settings, exception ) {
+	      console.log("Triggered ajaxError handler.");
+		}); 	
+	});

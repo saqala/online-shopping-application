@@ -19,7 +19,6 @@
 		<!-- DataTable Bootstrap Script -->
 		<script src="${js}/bootbox.min.js"></script>
 		
-		
 		<!-- Self coded javascript -->
 		<script src="${js}/myapp.js"></script>
 

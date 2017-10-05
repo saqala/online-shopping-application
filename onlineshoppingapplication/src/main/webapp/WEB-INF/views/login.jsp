@@ -24,6 +24,7 @@
 <!-- Bootstrap Core CSS -->
 <link href="${css}/bootstrap.min.css" rel="stylesheet">
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 
 
 
@@ -43,12 +44,12 @@
 	
 </script>
 </head>
-
 <body>
 
-	<div class="wrapper">
-
-		<!-- Navigation -->
+		
+        <div class="container">
+        
+        		<!-- Navigation -->
 	    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	        <div class="container">
 	            <!-- Brand and toggle get grouped for better mobile display -->
@@ -56,15 +57,9 @@
 	                <a class="navbar-brand" href="${contextRoot}/home">Online Shopping</a>
 	            </div>
 			</div>
-		</nav>		
-
-		<!-- Page Content -->
-
-		<div class="content">
-			
-   <div class="container">
-    
-   	<c:if test="${not empty message}">
+		</nav>	
+		
+           	<c:if test="${not empty message}">
 		<div class="row">
 			<div class="col-xs-12 col-md-offset-2 col-md-8">
 				<div class="alert alert-danger fade in">${message}</div>
@@ -79,59 +74,75 @@
 			</div>
 		</div>
 	</c:if>
-       
-    <div class="row">
-     
-     <div class="col-md-offset-3 col-md-6">
-      
-      <div class="panel panel-primary">
-       
-       <div class="panel-heading">
-        <h4>Login</h4>
-       </div>
-       
-       <div class="panel-body">
-        <form action="${contextRoot}/login" method="POST" class="form-horizontal"
-         id="loginForm"
+        <form class="form-horizontal" role="form" method="POST" 
+        action="${contextRoot}/login" id="loginForm"
         >
-         <div class="form-group">
-          <label for="username" class="col-md-4 control-label">Email: </label>
-          <div class="col-md-8">
-           <input type="text" name="username" id="username" class="form-control"/>
-          </div>
-         </div>
-         <div class="form-group">
-          <label for="password" class="col-md-4 control-label">Password: </label>
-          <div class="col-md-8">
-           <input type="password" name="password" id="password" class="form-control"/>
-          </div>
-         </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <h2>Please Login</h2>
+                    <hr>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div class="form-group has-danger">
+                        <label class="sr-only" for="email">E-Mail Address</label>
+                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+                            <input type="text" name="username"  class="form-control" id="email"
+                                   placeholder="you@example.com" required autofocus>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="sr-only" for="password">Password</label>
+                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
+                            <input type="password" name="password" class="form-control" id="password"
+                                   placeholder="Password" required>
+                        </div>
+                    </div>
+                </div>
          <div class="form-group">
           <div class="col-md-offset-4 col-md-8">
            <input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
-           <input type="submit" value="Login" class="btn btn-primary"/>
+           
           </div>
          </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6" style="padding-top: .35rem">
+                    <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                        <label class="form-check-label">
+                            <input class="form-check-input" name="remember"
+                                   type="checkbox" >
+                            <span style="padding-bottom: .15rem">Remember me</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="padding-top: 1rem">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+               
+                    <button type="submit" class="btn btn-success"><i class="fa fa-sign-in"></i> Login</button>
+                    
+                </div>
+            </div>
         </form>
-       
-       </div>
-       <div class="panel-footer">
+        
+               <div class="panel-footer">
        	<div class="text-right">
        		New User - <a href="${contextRoot}/register">Register Here</a>
        	</div>
-       </div>
-      
-      </div> 
-    
-     </div>
-     
-    </div>    
-   
-   </div>
-
-			
-		</div>
-
+       	
 
 		<!-- Footer comes here -->
 		<%@include file="./shared/footer.jsp"%>
@@ -146,9 +157,9 @@
 		
 		<!-- Self coded javascript -->
 		<script src="${js}/myapp.js"></script>
-
-	</div>
-
+       </div>
+    </div>
 </body>
+
 
 </html>
