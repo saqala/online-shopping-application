@@ -26,12 +26,13 @@
 	window.contextRoot = '${contextRoot}';
 </script>
 <!-- Bootstrap core CSS -->
-<link href="${css}/bootstrap.min.css" rel="stylesheet">
+<link href="${css}/bootstrap.minb.css" rel="stylesheet">
 
 <link href="${css}/bootstrap-readable-theme.css" rel="stylesheet">
 
 <link href="${css}/dataTables.bootstrap.css" rel="stylesheet">
 
+<link href="${css}/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
 
 <!-- Custom styles for this template -->

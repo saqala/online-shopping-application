@@ -109,34 +109,35 @@ $(function() {
 						mRender : function(data, type, row) {
 
 							var str = '';
-							str += '<a href="'
+							str += '<nobr> <a href="'
 									+ window.contextRoot
 									+ '/show/'
 									+ data
-									+ '/product" class="btn btn-primary"><span class="glyphicon glyphicon-eye-open"></span></a> &nbsp;';
+									+ '/product" class="btn btn-primary"><span class="fa fa-eye"></span></a> ';
 						
-							if (row.quantity < 1) {
-								str += '<a href="javascript:void(0)" class="btn btn-success disabled"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
-							} else {
+							if(userRole !== 'ADMIN') {
+								if (row.quantity < 1) {
+									str += '<a href="javascript:void(0)" class="btn btn-success disabled"><span class="fa fa-shopping-cart"></span></a>';
+								} 									else {
+									str += '<a href="'
+										+ window.contextRoot
+										+ '/cart/add/'
+										+ data
+										+ '/product" class="btn btn-success"><span class="fa fa-shopping-cart"></span></a></nobr>';
 
-									if(userRole == 'ADMIN') {
-										str += '<a href="'
-											+ window.contextRoot
-											+ '/cart/add/'
-											+ data
-											+ '/product" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span></a>';
-										
-									}
-									else {
-										str += '<a href="'
-											+ window.contextRoot
-											+ '/cart/add/'
-											+ data
-											+ '/product" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span></a>';
-
-									}
+								}
 							}
+							else {
+									
+										str += '<a href="'
+											+ window.contextRoot
+											+ '/cart/manage/'
+											+ data
+											+ '/product" class="btn btn-warning"><span class="fa fa-pencil"></span></a></nobr>';
+										
+									
 							
+							}
 							return str;
 
 						}
@@ -196,7 +197,7 @@ $(function() {
 								{
 									data : 'unitPrice',
 									mRender : function(data, type, row) {
-										return '&#8377; ' + data
+										return '&euro; ' + data
 									}
 								},
 								{
@@ -224,7 +225,7 @@ $(function() {
 												+ window.contextRoot
 												+ '/manage/'
 												+ data
-												+ '/product" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></a> &#160;';
+												+ '/product" class="btn btn-primary"><span class="fa fa-pencil></span></a> &#160;';
 
 										return str;
 									}

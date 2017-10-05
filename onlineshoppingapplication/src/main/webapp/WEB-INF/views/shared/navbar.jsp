@@ -32,7 +32,7 @@
 			    <ul class="nav navbar-nav navbar-right">
 			    	<security:authorize access="isAnonymous()">
 	                    <li id="signup" class="nav-item">
-	                        <a href="${contextRoot}/membership" class="nav-link">Sign Up</a>
+	                        <a href="${contextRoot}/register" class="nav-link">Sign Up</a>
 	                    </li>
 						<li id="login" class="nav-item">
 	                        <a href="${contextRoot}/login" class="nav-link">Login</a>

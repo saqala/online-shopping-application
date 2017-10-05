@@ -181,7 +181,9 @@
 
 		<div class='col-xs-12'>
 
+			<div class="container-fluid">
 
+				<div class="table-responsive">
 			<table id="productsTable"
 				class="table table-condensed table-bordered">
 
@@ -214,7 +216,8 @@
 
 			</table>
 
-
+			</div>
+</div>
 		</div>
 
 

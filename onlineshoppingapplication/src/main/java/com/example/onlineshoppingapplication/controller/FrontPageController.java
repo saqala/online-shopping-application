@@ -23,6 +23,7 @@ import example.com.onlineshoppingapplicationbackend.dto.Category;
 import example.com.onlineshoppingapplicationbackend.dto.Product;
 
 @Controller
+@RequestMapping("/")
 public class FrontPageController {
 
 	@Autowired
@@ -147,4 +148,7 @@ public class FrontPageController {
 		mv.addObject("errorDescription", "You are not authorized to view this page!");
 		return mv;
 	}
+	
+
+	
 }

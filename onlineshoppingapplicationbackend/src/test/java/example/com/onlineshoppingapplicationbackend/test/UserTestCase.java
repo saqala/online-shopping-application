@@ -130,13 +130,13 @@ public class UserTestCase {
 		
 	}*/
 	
-/*	@Test
+	@Test
 	public void testUpdateCart() {
 		user = userDao.get(1);
 		cart = user.getCart();
 		cart.setGrandTotal(10000);
 		cart.setCartLines(1);
 		assertEquals("Failed to update the cart!", true, userDao.updateCart(cart));			
-	} */
+	} 
 
 }
