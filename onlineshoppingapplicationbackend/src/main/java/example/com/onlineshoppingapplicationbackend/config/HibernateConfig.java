@@ -18,21 +18,21 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 public class HibernateConfig {
 
-/*	private final static String DATABASE_URL = "postgres://sgxuzxwstkiiip:c48eb89c77a06613e097f6f192353c59de50d8a2230b9d0dc297232c6a4dbfa0@ec2-107-22-235-167.compute-1.amazonaws.com:5432/d3doq2hifk108v";
-	private final static String DATABASE_DRIVER = "org.postgresql.Driver";
+	private final static String DATABASE_URL = "jdbc:mysql://localhost:3306/mydb";
+	private final static String DATABASE_DRIVER = "com.mysql.jdbc.Driver";
 	private final static String DATABASE_DIALECT = "org.hibernate.dialect.H2Dialect";
-	private final static String DATABASE_USERNAME = "sgxuzxwstkiiip";
-	private final static String DATABASE_PASSWORD = "c48eb89c77a06613e097f6f192353c59de50d8a2230b9d0dc297232c6a4dbfa0";
-*/
+	private final static String DATABASE_USERNAME = "user";
+	private final static String DATABASE_PASSWORD = "";
+
 	private final static String DATABASE_DIALECT = "org.hibernate.dialect.H2Dialect";
 	@Bean("dataSource")
 	public DataSource getDataSource() {
 
 		/*BasicDataSource dataSource = new BasicDataSource();*/
 
-        String dbUrl = System.getenv("JDBC_DATABASE_URL");
-        String username = System.getenv("JDBC_DATABASE_USERNAME");
-        String password = System.getenv("JDBC_DATABASE_PASSWORD");
+        String dbUrl = DATABASE_URL;
+        String username = DATABASE_USERNAME;
+        String password = DATABASE_PASSWORD;
 
         BasicDataSource basicDataSource = new BasicDataSource();
         basicDataSource.setUrl(dbUrl);
