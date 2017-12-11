@@ -17,14 +17,14 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ComponentScan(basePackages = { "example.com.onlineshoppingapplicationbackend.dto" })
 @EnableTransactionManagement
 public class HibernateConfig {
-
-	private final static String DATABASE_URL = "jdbc:mysql://localhost:3306/mydb";
+	
+	private final static String DATABASE_URL = "jdbc:mysql://localhost:3306/shopping?createDatabaseIfNotExist=true";
 	private final static String DATABASE_DRIVER = "com.mysql.jdbc.Driver";
-	private final static String DATABASE_DIALECT = "org.hibernate.dialect.H2Dialect";
-	private final static String DATABASE_USERNAME = "user";
+	private final static String DATABASE_DIALECT = "org.hibernate.dialect.MySQLDialect";
+	private final static String DATABASE_USERNAME = "root";
 	private final static String DATABASE_PASSWORD = "";
 
-	private final static String DATABASE_DIALECT = "org.hibernate.dialect.H2Dialect";
+	
 	@Bean("dataSource")
 	public DataSource getDataSource() {
 
@@ -35,7 +35,8 @@ public class HibernateConfig {
         String password = DATABASE_PASSWORD;
 
         BasicDataSource basicDataSource = new BasicDataSource();
-        basicDataSource.setUrl(dbUrl);
+        basicDataSource.setDriverClassName(DATABASE_DRIVER);
+        basicDataSource.setUrl(DATABASE_URL);
         basicDataSource.setUsername(username);
         basicDataSource.setPassword(password);
 		
