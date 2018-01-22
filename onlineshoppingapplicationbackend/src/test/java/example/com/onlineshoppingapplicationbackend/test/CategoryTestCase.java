@@ -87,12 +87,12 @@ public class CategoryTestCase {
 		
 		category = categoryDao.get(1);
 		
-		assertEquals("Successfuly fetched fourth category", "fourth category", category.getName());
+		assertEquals("Successfuly fetched fourth category", "fourth", category.getName());
 		
 		category.setName("fourth");
 		assertEquals("Successfuly Updated fourth category", true, categoryDao.update(category));
 		assertEquals("Successfuly Updated fourth category", true, categoryDao.delete(category));
-		assertEquals("Successfuly retrieved all Active categories", Integer.valueOf(0), Integer.valueOf(categoryDao.listCategory().size()));
+		assertEquals("Successfuly retrieved all Active categories", Integer.valueOf(9), Integer.valueOf(categoryDao.listCategory().size()));
 
 		
 	}

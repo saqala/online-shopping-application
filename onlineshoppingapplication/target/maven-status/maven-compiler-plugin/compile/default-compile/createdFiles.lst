@@ -1,0 +1,13 @@
+com\example\onlineshoppingapplication\model\UserModel.class
+com\example\onlineshoppingapplication\service\CartService.class
+com\example\onlineshoppingapplication\Utils\FileUtil.class
+com\example\onlineshoppingapplication\exception\GlobalDefaultExceptionHandler.class
+com\example\onlineshoppingapplication\model\RegisterModel.class
+com\example\onlineshoppingapplication\controller\GlobalController.class
+com\example\onlineshoppingapplication\controller\JsonDataController.class
+com\example\onlineshoppingapplication\controller\ManagementController.class
+com\example\onlineshoppingapplication\validator\ProductValidator.class
+com\example\onlineshoppingapplication\exception\ProductNotFoundException.class
+com\example\onlineshoppingapplication\controller\CartController.class
+com\example\onlineshoppingapplication\controller\FrontPageController.class
+com\example\onlineshoppingapplication\handler\RegisterHandler.class

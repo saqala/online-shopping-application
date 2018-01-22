@@ -1,0 +1,5 @@
+example\com\onlineshoppingapplicationbackend\test\UserTestCase.class
+example\com\onlineshoppingapplicationbackend\AppTest.class
+example\com\onlineshoppingapplicationbackend\test\CartLineTestCase.class
+example\com\onlineshoppingapplicationbackend\test\ProductTestCase.class
+example\com\onlineshoppingapplicationbackend\test\CategoryTestCase.class

@@ -38,7 +38,7 @@ public class FrontPageController {
 	public ModelAndView index() {
 		logger.info("Inside FrontPage Controller -- Home page");
 		logger.debug("Inside FrontPage Controller -- Home page -- DEBUG");
-		ModelAndView mv = new ModelAndView("page");
+		ModelAndView mv = new ModelAndView("index");
 		mv.addObject("title", "Home");
 		mv.addObject("userClickHome", true);
 		mv.addObject("categories", categoryDao.listCategory());
