@@ -50,6 +50,8 @@ public class FrontPageController {
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("title", "About");		
 		mv.addObject("userClickAbout", true);
+		mv.addObject("categories", categoryDao.listCategory());
+
 		return mv;
 	}
 	
@@ -58,6 +60,8 @@ public class FrontPageController {
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("title", "Contact");		
 		mv.addObject("userClickContact", true);
+		mv.addObject("categories", categoryDao.listCategory());
+
 		return mv;
 	}
 	
@@ -131,6 +135,8 @@ public class FrontPageController {
 			@RequestParam(name="logout", required = false) String logout) {
 		ModelAndView mv= new ModelAndView("login");
 		mv.addObject("title", "Login");
+		mv.addObject("categories", categoryDao.listCategory());
+
 		if(error!=null) {
 			mv.addObject("message", "Username and Password is invalid!");
 		}
@@ -146,6 +152,8 @@ public class FrontPageController {
 		mv.addObject("title", "Access Denied");
 		mv.addObject("errorTitle", "Wrong!");
 		mv.addObject("errorDescription", "You are not authorized to view this page!");
+		mv.addObject("categories", categoryDao.listCategory());
+
 		return mv;
 	}
 	

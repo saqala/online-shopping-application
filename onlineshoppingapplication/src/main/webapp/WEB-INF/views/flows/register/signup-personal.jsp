@@ -1,126 +1,72 @@
-<%@include file="../flows-shared/header.jsp" %>
-<%@taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>			
-	<div class="container">
-		
-			    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-	        <div class="container">
-	            <!-- Brand and toggle get grouped for better mobile display -->
-	            <div class="navbar-header">
-	                <a class="navbar-brand" href="${flowExecutionUrl}&_eventId=home">Online Shopping</a>
-	            </div>
-			</div>
-		</nav>
-		<div class="row">
-			
-			<div class="col-md-6 col-md-offset-3">
-				
-				<div class="panel panel-primary">
-				
-					<div class="panel-heading">
-						<h4>Sign Up - Personal</h4>
-					</div>
-					
-					<div class="panel-body">
-										
-						<sf:form
-							method="POST"
-							modelAttribute="user"
-							class="form-horizontal"
-							id="registerForm"
-						>
-						
-							
-							<div class="form-group">
-								<label class="control-label col-md-4">First Name</label>
-								<div class="col-md-8">
-									<sf:input type="text" path="firstName" class="form-control"
-										placeholder="First Name" />
-									<sf:errors path="firstName" cssClass="help-block" element="em"/> 
-								</div>
-							</div>
+<%@include file="../flows-shared/header.jsp"%>
+<%@taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 
 
-							<div class="form-group">
-								<label class="control-label col-md-4">Last Name</label>
-								<div class="col-md-8">
-									<sf:input type="text" path="lastName" class="form-control"
-										placeholder="Last Name" />
-									<sf:errors path="lastName" cssClass="help-block" element="em"/> 
-								</div>
-							</div>
-						
-							<div class="form-group">
-								<label class="control-label col-md-4">Email</label>
-								<div class="col-md-8">
-									<sf:input type="text" path="email" class="form-control"
-										placeholder="abc@zyx.com" />
-									<sf:errors path="email" cssClass="help-block" element="em"/> 									
-								</div>
-							</div>
+<div class="w3l_banner_nav_right">
+	<!-- login -->
 
-							<div class="form-group">
-								<label class="control-label col-md-4">Contact Number</label>
-								<div class="col-md-8">
-									<sf:input type="text" path="contactNumber" class="form-control"
-										placeholder="XXXXXXXXXX" maxlength="10" />
-									<sf:errors path="contactNumber" cssClass="help-block" element="em"/> 
-								</div>
-							</div>
-							
-							<div class="form-group">
-								<label class="control-label col-md-4">Password</label>
-								<div class="col-md-8">
-									<sf:input type="password" path="password" class="form-control"
-										placeholder="Password" />
-									<sf:errors path="password" cssClass="help-block" element="em"/> 
-								</div>
-							</div>
-							
-							<div class="form-group">
-								<label class="control-label col-md-4">Confirm Password</label>
-								<div class="col-md-8">
-									<sf:input type="password" path="confirmPassword" class="form-control"
-										placeholder="Re-type password" />
-									<sf:errors path="confirmPassword" cssClass="help-block" element="em"/>										 
-								</div>
-							</div>
-							
-	<div class="form-group">
-		<label class="control-label col-md-4">Select Role</label>
-		<div class="col-md-8">
-			<label class="radio-inline">
-				<sf:radiobutton path="role" value="USER" checked="checked"/> User 				
-			</label>
-			<label class="radio-inline">
-				<sf:radiobutton path="role" value="SUPPLIER"/> Supplier
-			</label>
-		</div>
-	</div>							
+	<div class="w3_login">
+		<h3>Sign up</h3>
+		<div class="w3_login_module">
+			<div class="module form-module">
+				<div class="toggle">
+					<i class="fa fa-times fa-pencil" aria-hidden="true"></i>
 
-							<div class="form-group">
-								<div class="col-md-offset-4 col-md-8">
-									<button type="submit" name="_eventId_billing" class="btn btn-primary">
-										Next - Billing <span class="glyphicon glyphicon-chevron-right"></span>
-									</button>																	 
-								</div>
-							</div>
-						
-						
-						</sf:form>					
-					
-					
-					</div>
-				
-				
 				</div>
-			
-			
-			</div>
-		
-		
-		</div>
-		
-		
-	</div>
+				<div class="form">
+					<h2>Personal</h2>
+					<sf:form method="post" modelAttribute="user" id="registerForm">
+						<sf:input type="text" path="firstName" placeholder="First Name"
+							required=" " />
+						<sf:errors path="firstName"
+							cssClass="help-block alert alert-warning" element="em" />
+						<sf:input type="text" path="lastName" placeholder="Last Name"
+							required=" " />
+						<sf:errors path="lastName"
+							cssClass="help-block alert alert-warning" element="em" />
 
-<%@include file="../flows-shared/footer.jsp" %>			
+						<sf:input type="text" path="email" required=" "
+							placeholder="Email - abc@zyx.com" />
+						<sf:errors path="email"
+							cssClass="help-block alert alert-warning" element="em" />
+
+						<sf:input type="text" path="contactNumber" required=" "
+							placeholder="Contact Number - XXXXXXXXXX" maxlength="10" />
+						<sf:errors path="contactNumber"
+							cssClass="help-block alert alert-warning" element="em" />
+
+						<sf:input type="password" path="password" required=" "
+							placeholder="Password" />
+						<sf:errors path="password"
+							cssClass="help-block alert alert-warning" element="em" />
+
+						<sf:input type="password" path="confirmPassword" required=" "
+							placeholder="Re-type password" />
+						<sf:errors path="confirmPassword"
+							cssClass="help-block alert alert-warning" element="em" />
+
+						<div class="form-group">
+							<label class="control-label">Select Role</label>
+							<div class="">
+								<label class="radio-inline"> <sf:radiobutton path="role"
+										value="USER" checked="checked" /> User
+								</label> <label class="radio-inline"> <sf:radiobutton
+										path="role" value="SUPPLIER" /> Supplier
+								</label>
+							</div>
+						</div>
+						<input type="submit" name="_eventId_billing" value="Billing">
+					</sf:form>
+				</div>
+			</div>
+		</div>
+		<script>
+					$('.toggle').click(function() {
+					});
+				</script>
+	</div>
+	<!-- //login -->
+</div>
+<div class="clearfix"></div>
+</div>
+<%@include file="../flows-shared/footer.jsp"%>

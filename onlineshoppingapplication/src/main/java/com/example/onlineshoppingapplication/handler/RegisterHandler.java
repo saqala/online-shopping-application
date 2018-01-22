@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import com.example.onlineshoppingapplication.model.RegisterModel;
 
+import example.com.onlineshoppingapplicationbackend.dao.CategoryDao;
 import example.com.onlineshoppingapplicationbackend.dao.UserDao;
 import example.com.onlineshoppingapplicationbackend.dto.Address;
 import example.com.onlineshoppingapplicationbackend.dto.Cart;
@@ -17,14 +18,18 @@ import example.com.onlineshoppingapplicationbackend.dto.User;
 @Component
 public class RegisterHandler {
 
-
+	@Autowired
+	private CategoryDao categoryDao;
+	
 	 @Autowired
 	 private PasswordEncoder passwordEncoder;
 	
  @Autowired
  private UserDao userDAO;
  public RegisterModel init() { 
-  return new RegisterModel();
+	 RegisterModel reg = new RegisterModel();
+	reg.setCat( categoryDao.listCategory());
+  return reg;
  } 
  public void addUser(RegisterModel registerModel, User user) {
   registerModel.setUser(user);
