@@ -2,6 +2,7 @@ package com.example.onlineshoppingapplication.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,17 +11,26 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.onlineshoppingapplication.Utils.FileUtil;
 import com.example.onlineshoppingapplication.exception.ProductNotFoundException;
+import com.example.onlineshoppingapplication.validator.ContactValidator;
+import com.example.onlineshoppingapplication.validator.ProductValidator;
 
 import example.com.onlineshoppingapplicationbackend.dao.CategoryDao;
 import example.com.onlineshoppingapplicationbackend.dao.ProductDao;
+import example.com.onlineshoppingapplicationbackend.dao.VisitorDao;
 import example.com.onlineshoppingapplicationbackend.dto.Category;
 import example.com.onlineshoppingapplicationbackend.dto.Product;
+import example.com.onlineshoppingapplicationbackend.dto.Visitor;
 
 @Controller
 @RequestMapping("/")
@@ -28,6 +38,9 @@ public class FrontPageController {
 
 	@Autowired
 	private CategoryDao categoryDao;
+	
+	@Autowired
+	private VisitorDao visitorDao;
 	
 	@Autowired
 	private ProductDao productDao;
@@ -38,7 +51,7 @@ public class FrontPageController {
 	public ModelAndView index() {
 		logger.info("Inside FrontPage Controller -- Home page");
 		logger.debug("Inside FrontPage Controller -- Home page -- DEBUG");
-		ModelAndView mv = new ModelAndView("index");
+		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("title", "Home");
 		mv.addObject("userClickHome", true);
 		mv.addObject("categories", categoryDao.listCategory());
@@ -55,15 +68,40 @@ public class FrontPageController {
 		return mv;
 	}
 	
-	@RequestMapping(value= "/contact" )
+	
+	@RequestMapping(value= "/contact", method = RequestMethod.GET)
 	public ModelAndView contact() {
+		Visitor vs = new Visitor();
 		ModelAndView mv = new ModelAndView("page");
 		mv.addObject("title", "Contact");		
 		mv.addObject("userClickContact", true);
 		mv.addObject("categories", categoryDao.listCategory());
-
+		mv.addObject("visitor", vs);
 		return mv;
 	}
+	
+	@RequestMapping(value = "/contact", method = RequestMethod.POST)
+	public String handleProductSubmission(@Valid @ModelAttribute("visitor") Visitor visitor, BindingResult result,
+			Model model, HttpServletRequest request) {
+
+			
+		if(result.hasErrors()) {
+			model.addAttribute("userClickContact", true);
+			model.addAttribute("title", "Contact");
+			model.addAttribute("message", "Validation failed for Contact Submission!");
+			return "page";
+		}
+		
+
+		logger.info(visitor.toString());
+		
+		if(visitor.getId() == 0)
+			visitorDao.add(visitor);
+
+
+		return "redirect:/home";
+	}
+	
 	
 /*	@RequestMapping(value= {"testvariable"} )
 	public ModelAndView test(@RequestParam(value="greetings", required=false) String sc) {

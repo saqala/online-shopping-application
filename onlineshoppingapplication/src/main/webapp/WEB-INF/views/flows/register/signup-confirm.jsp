@@ -1,80 +1,95 @@
-<%@include file="../flows-shared/header.jsp" %>
-<div class="container">
-		    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-	        <div class="container">
-	            <!-- Brand and toggle get grouped for better mobile display -->
-	            <div class="navbar-header">
-	                <a class="navbar-brand" href="${flowExecutionUrl}&_eventId=home">Online Shopping</a>
-	            </div>
+<%@include file="../flows-shared/header.jsp"%>
+<%@taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
+
+
+<div class="w3l_banner_nav_right">
+	<!-- login -->
+
+	<div class="w3_login">
+		<h3>Confirm informations</h3>
+		<div class="w3_login_module">
+			<div class="module form-module">
+				<div class="toggle">
+					<i class="fa fa-times fa-pencil" aria-hidden="true"></i>
+				</div>
+				<div class="form">
+					<h2>Personal Details</h2>
+					<br>
+					<h3>
+						Name : <strong>${registerModel.user.firstName}
+							${registerModel.user.lastName}</strong>
+					</h3>
+					<br>
+					<h4>
+						Email : <strong>${registerModel.user.email}</strong>
+					</h4>
+					<br>
+					<h4>
+						Contact : <strong>${registerModel.user.contactNumber}</strong>
+					</h4>
+					<br>
+					<h4>
+						Role : <strong>${registerModel.user.role}</strong>
+					</h4>
+					<br>
+					<h1>
+						<a href="${flowExecutionUrl}&_eventId_personal"><span
+							class="label label-info">Edit</span></a>
+					</h1>
+				</div>
 			</div>
-		</nav>
-	<div class="row">
-	
-		<div class="col-sm-6">
-	
-			<div class="panel panel-primary">
-				
-				<div class="panel-heading">
-					<h4>Personal Details</h4>
+			<div class="module form-module">
+				<div class="toggle">
+					<i class="fa fa-times fa-pencil" aria-hidden="true"></i>
 				</div>
-			
-				<div class="panel-body">
-					<div class="text-center">
-						<h3>Name : <strong>${registerModel.user.firstName} ${registerModel.user.lastName}</strong></h3>
-						<h4>Email : <strong>${registerModel.user.email}</strong></h4>
-						<h4>Contact : <strong>${registerModel.user.contactNumber}</strong></h4>
-						<h4>Role : <strong>${registerModel.user.role}</strong></h4>
-						<p>
-							<a href="${flowExecutionUrl}&_eventId_personal" class="btn btn-primary">Edit</a>
-						</p>
-					</div>
+				<div class="form">
+					<h2>Billing Address</h2>
+					<br>
+					<h4>
+						Address Line One : <strong>${registerModel.billing.addressLineOne}
+						</strong>
+					</h4>
+					<br>
+					<h4>
+						Address Line Two : <strong>${registerModel.billing.addressLineTwo}</strong>
+					</h4>
+					<br>
+					<h4>
+						City : <strong>${registerModel.billing.city} -
+							${registerModel.billing.postalCode}</strong>
+					</h4>
+					<br>
+					<h4>
+						State : <strong>${registerModel.billing.state}</strong>
+					</h4>
+					<br>
+					<h4>
+						Country : <strong>${registerModel.billing.country}</strong>
+					</h4>
+					<br>
+					<h1>
+						<a href="${flowExecutionUrl}&_eventId_billing"><span
+							class="label label-info">Edit</span></a>
+					</h1>
 				</div>
-			
+
 			</div>
-					
-		
-		</div>
-		
-		<div class="col-sm-6">
-		
-			<div class="panel panel-primary">
-				
-				<div class="panel-heading">
-					<h4>Billing Address</h4>
-				</div>
-			
-				<div class="panel-body">
-					<div class="text-center">
-						<p>${registerModel.billing.addressLineOne}, </p>
-						<p>${registerModel.billing.addressLineTwo}, </p>
-						<p>${registerModel.billing.city} -  ${registerModel.billing.postalCode}, </p>
-						<p>${registerModel.billing.state}</p>
-						<p>${registerModel.billing.country}</p>
-						<p>
-							<a href="${flowExecutionUrl}&_eventId_billing" class="btn btn-primary">Edit</a>
-						</p>
-					</div>
-				</div>
-			
-			</div>
-		
-		</div>
-	
-	</div>
-	
-	<div class="row">
-		
-		<div class="col-sm-4 col-sm-offset-4">
-			
 			<div class="text-center">
-				
-				<a href="${flowExecutionUrl}&_eventId_submit" class="btn btn-lg btn-primary">Confirm</a>
-				
+			<h1>
+				<a href="${flowExecutionUrl}&_eventId_submit"><span
+					class="label label-success">Confirm</span></a>
+			</h1>			
 			</div>
-			
+
 		</div>
-		
+		<script>
+			$('.toggle').click(function() {
+			});
+		</script>
 	</div>
+	<!-- //login -->
 
 </div>
-<%@include file="../flows-shared/footer.jsp" %>
+<div class="clearfix"></div>
+</div>
+<%@include file="../flows-shared/footer.jsp"%>
